@@ -1,17 +1,5 @@
-FROM alpine:latest
-ARG TARGETARCH
-ARG TARGETVARIANT
-RUN apk --no-cache add ca-certificates tini
-RUN apk add tzdata && \
-	cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-	echo "Asia/Shanghai" > /etc/timezone && \
-	apk del tzdata
-
-RUN mkdir -p /etc/aliyundrive-webdav
-WORKDIR /root/
-ADD aliyundrive-webdav-$TARGETARCH$TARGETVARIANT /usr/bin/aliyundrive-webdav
-
+FROM messense/aliyundrive-webdav:latest
 ENV NO_SELF_UPGRADE 1
 
-ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["/usr/bin/aliyundrive-webdav", "--auto-index", "--workdir", "/etc/aliyundrive-webdav"]
+# 默认buffer为10MB，会导致Android客户端报错，所以改为1MB
+CMD ["/usr/bin/aliyundrive-webdav", "--auto-index", "--workdir", "/etc/aliyundrive-webdav", "--read-buffer-size", "1048576"]
