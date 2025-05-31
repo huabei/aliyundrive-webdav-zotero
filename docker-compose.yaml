@@ -1,0 +1,13 @@
+services:
+  aliyundrive-webdav:
+    image: aliyundrive-webdav-zotero:latest
+    container_name: aliyundrive-webdav-zotero
+    restart: unless-stopped
+    ports:
+      - "16888:8080"
+    volumes:
+      - ./aliyundrive-webdav/:/etc/aliyundrive-webdav/
+    environment:
+      - REFRESH_TOKEN=${MY_REFRESH_TOKEN} # 从 .env 文件读取
+      - WEBDAV_AUTH_USER=huabei
+      - WEBDAV_AUTH_PASSWORD=huabei
