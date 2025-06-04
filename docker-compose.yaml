@@ -1,6 +1,6 @@
 services:
   aliyundrive-webdav:
-    image: aliyundrive-webdav-zotero:latest
+    image: huabei/aliyundrive-webdav-zotero:latest
     container_name: aliyundrive-webdav-zotero
     restart: unless-stopped
     ports:
