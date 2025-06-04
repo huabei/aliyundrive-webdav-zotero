@@ -9,5 +9,7 @@ services:
       - ./aliyundrive-webdav/:/etc/aliyundrive-webdav/
     environment:
       - REFRESH_TOKEN=${MY_REFRESH_TOKEN} # 从 .env 文件读取
-      - WEBDAV_AUTH_USER=huabei
-      - WEBDAV_AUTH_PASSWORD=huabei
+      - WEBDAV_AUTH_USER=${WEBDAV_AUTH_USER}
+      - WEBDAV_AUTH_PASSWORD=${WEBDAV_AUTH_PASSWORD}
+    dns: # <--- ADD THIS SECTION
+      - 223.5.5.5 # AliDNS (if you are in China)
