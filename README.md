@@ -2,7 +2,7 @@
 应用aliyunpan到Zotero同步，轻量应用可以选择坚果云。
 
 主要修改：
-1. 修改--read-buffer-size选项为1M
+1. 修改--read-buffer-size选项为1M，因为Aliyun限速会导致Zotero长时间不能够得到数据，从而报错。
 2. 修改添加DNS为aliyun（223.5.5.5），否则可能遇到DNS的问题
 
 
@@ -12,7 +12,6 @@
 git clone https://github.com/huabei/aliyundrive-webdav-zotero.git
 cd aliyundrive-webdav-zotero
 ```
-
 
 ## Build
 ```bash
